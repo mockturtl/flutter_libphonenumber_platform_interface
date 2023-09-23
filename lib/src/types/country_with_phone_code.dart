@@ -116,7 +116,7 @@ class CountryWithPhoneCode {
       '[CountryWithPhoneCode(countryName: $countryName, regionCode: $countryCode, phoneCode: $phoneCode, exampleNumberMobileNational: $exampleNumberMobileNational, exampleNumberFixedLineNational: $exampleNumberFixedLineNational, phoneMaskMobileNational: $phoneMaskMobileNational, phoneMaskFixedLineNational: $phoneMaskFixedLineNational, exampleNumberMobileInternational: $exampleNumberMobileInternational, exampleNumberFixedLineInternational: $exampleNumberFixedLineInternational, phoneMaskMobileInternational: $phoneMaskMobileInternational, phoneMaskFixedLineInternational: $phoneMaskFixedLineInternational)]';
 
   /// Get the phone mask based on number type and format.
-  /// When `removeCountryCodeFromMask` is true then the resulting mask
+  /// When [removeCountryCodeFromMask] is true then the resulting mask
   /// will not contain the phone code. This is useful for real-time formatting
   /// with [LibPhonenumberTextFormatter] where the user might be entering a phone
   /// number without the country code in it but we still want to format it accordingly.
