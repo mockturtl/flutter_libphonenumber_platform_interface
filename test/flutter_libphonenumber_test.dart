@@ -42,32 +42,33 @@ void main() {
   });
 
   group('getPhoneMask', () {
-    test('with removeCountryCodeFromMask=false', () async {
-      final res = const CountryWithPhoneCode.us().getPhoneMask(
-        format: PhoneNumberFormat.international,
-        type: PhoneNumberType.mobile,
-        removeCountryCodeFromMask: false,
-      );
+    late CountryWithPhoneCode subj;
+    late PhoneNumberFormat fmt;
+    group('intl format', () {
+      setUp(() {
+        subj = CountryWithPhoneCode.us();
+        fmt = PhoneNumberFormat.international;
+      });
 
-      expect(
-        res,
-        '+0 000-000-0000',
-        reason: 'mask should contain country code in it',
-      );
-    });
+      test('with removeCountryCodeFromMask=false', () async {
+        final res = subj.getPhoneMask(
+            format: fmt,
+            type: PhoneNumberType.mobile,
+            removeCountryCodeFromMask: false);
 
-    test('with removeCountryCodeFromMask=true', () async {
-      final res = const CountryWithPhoneCode.us().getPhoneMask(
-        format: PhoneNumberFormat.international,
-        type: PhoneNumberType.mobile,
-        removeCountryCodeFromMask: true,
-      );
+        expect(res, '+0 000-000-0000',
+            reason: 'mask should contain country code in it');
+      });
 
-      expect(
-        res,
-        '000-000-0000',
-        reason: 'mask should not contain country code in it',
-      );
+      test('with removeCountryCodeFromMask=true', () async {
+        final res = subj.getPhoneMask(
+            format: fmt,
+            type: PhoneNumberType.mobile,
+            removeCountryCodeFromMask: true);
+
+        expect(res, '000-000-0000',
+            reason: 'mask should not contain country code in it');
+      });
     });
   });
 
