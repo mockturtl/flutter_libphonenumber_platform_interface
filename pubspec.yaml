@@ -1,0 +1,18 @@
+name: flutter_libphonenumber_platform_interface
+description: A common platform interface for the flutter_libphonenumber plugin.
+repository: https://github.com/bottlepay/flutter_libphonenumber/tree/main/packages/flutter_libphonenumber_platform_interface
+issue_tracker: https://github.com/bottlepay/flutter_libphonenumber/issues
+version: 1.0.0
+
+environment:
+  sdk: ">=2.19.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
