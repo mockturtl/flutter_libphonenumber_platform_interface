@@ -125,20 +125,17 @@ class CountryWithPhoneCode {
     required final PhoneNumberType type,
     final bool removeCountryCodeFromMask = false,
   }) {
-    late String returnMask;
-    if (type == PhoneNumberType.mobile) {
-      if (format == PhoneNumberFormat.international) {
-        returnMask = phoneMaskMobileInternational;
-      } else {
-        returnMask = phoneMaskMobileNational;
-      }
-    } else {
-      if (format == PhoneNumberFormat.international) {
-        returnMask = phoneMaskFixedLineInternational;
-      } else {
-        returnMask = phoneMaskFixedLineNational;
-      }
-    }
+    var isIntl = format == PhoneNumberFormat.international;
+    var returnMask = switch (type) {
+      PhoneNumberType.mobile => switch (format) {
+          PhoneNumberFormat.national => phoneMaskMobileNational,
+          PhoneNumberFormat.international => phoneMaskMobileInternational,
+        },
+      PhoneNumberType.fixedLine => switch (format) {
+          PhoneNumberFormat.national => phoneMaskFixedLineNational,
+          PhoneNumberFormat.international => phoneMaskFixedLineInternational,
+        },
+    };
 
     /// If we want to get the mask without the country code, strip
     /// out the country code from the mask now.
