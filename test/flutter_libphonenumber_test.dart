@@ -70,6 +70,22 @@ void main() {
             reason: 'mask should not contain country code in it');
       });
     });
+
+    group('national format', () {
+      setUp(() => fmt = PhoneNumberFormat.national);
+
+      test('ignores removeCountryCodeFromMask', () async {
+        for (var flag in {true, false}) {
+          final res = subj.getPhoneMask(
+              format: fmt,
+              type: PhoneNumberType.mobile,
+              removeCountryCodeFromMask: flag);
+
+          expect(res, '(000) 000-0000',
+              reason: 'mask should not contain country code in it');
+        }
+      });
+    });
   });
 
   group('LibPhonenumberTextFormatter', () {
